@@ -93,7 +93,7 @@
     }
 
     async function run() {
-      await faceapi.loadMtcnnModel('/')
+      await await faceapi.loadMtcnnModel('/modles')
       modelLoaded = true
       const videoEl = $('#inputVideo').get(0)
       navigator.getUserMedia(
