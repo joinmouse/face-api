@@ -18,6 +18,8 @@
       <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
       <canvas id="overlay" />
     </div>
+
+
     <div class="row side-by-side">
       <div class="row">
         <label for="minFaceSize">Minimum Face Size:</label>
@@ -53,6 +55,7 @@
     let minFaceSize = 200
     let minConfidence = 0.9
     let forwardTimes = []
+
     function onIncreaseMinFaceSize() {
       minFaceSize = Math.min(faceapi.round(minFaceSize + 50), 300)
       $('#minFaceSize').val(minFaceSize)
@@ -96,7 +99,7 @@
       await await faceapi.loadMtcnnModel('/modles')
       modelLoaded = true
       const videoEl = $('#inputVideo').get(0)
-      navigator.getUserMedia(
+      navigator.mediaDevices.getUserMedia(
         { video: {} },
         stream => videoEl.srcObject = stream,
         err => console.error(err)
